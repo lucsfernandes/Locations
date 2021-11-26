@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package searchAddressApi;
+
+service SearchAddressService {
+  rpc ListUf          (GetParams)               returns (ListUfResponse);
+  rpc ListAddress     (ListCep)                 returns (ListResponse) {}
+}
+
+message ListCep {
+  string CEP = 1;
+}
+
+message ListResponse {
+ string CEP = 1;
+ string UF = 2; 
+ string Endereco = 3;
+ string Bairro1_Acento = 4;
+ string Cidade_Acento = 5; 
+ string latitude = 6;
+ string longitude = 7;
+}
+
+message GetParams {}
+
+message ListUfResponse {
+  message Uf {
+	string UF = 1;
+  }
+  repeated Uf Ufs = 1;
+}

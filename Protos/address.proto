@@ -1,0 +1,78 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Locations";
+
+package addressApi;
+
+service AddressService {
+	rpc Get			(ListParam)		returns (ListResponse);
+	rpc Create		(CreateParams)	returns (CreateResponse) {}
+	rpc Update		(UpdateParams)	returns (UpdateResponse) {}
+}
+
+message ListParam {
+	string professional_id = 1;
+}
+
+message ListResponse {
+	message Address {
+		int32 id = 1;
+		string cep = 2;
+		string address = 3;
+		string number = 4;
+		string complement = 5;
+		string neighborhood = 6;
+		string city = 7;
+		string uf = 8;
+		string country = 9;
+		int32 status = 10;
+		string latitude = 11;
+		string longitude = 12;
+		string patient_id = 13;
+		string professional_id = 14;
+		string type = 15;
+	}
+	repeated Address addresses = 1;
+}
+
+message CreateParams {
+	string type = 1;
+	string cep = 2;
+	string address = 3;
+	string number = 4;
+	string complement = 5;
+	string neighborhood = 6;
+	string city = 7;
+	string uf = 8;
+	string country = 9;
+	string latitude = 10;
+	string longitude = 11;
+	string professional_id = 12;
+	string patient_id = 13;
+}
+
+message CreateResponse {
+	int32 id = 1;
+}
+
+message UpdateParams {
+	int32 id = 1;
+	string type = 2;
+	string cep = 3;
+	string address = 4;
+	string number = 5;
+	string complement = 6;
+	string neighborhood = 7;
+	string city = 8;
+	string uf = 9;
+	string country = 10;
+	string latitude = 11;
+	string longitude = 12;
+	string professional_id = 13;
+	string patient_id = 14;
+}
+
+message UpdateResponse {
+	int32 address_id = 1;
+}
+
